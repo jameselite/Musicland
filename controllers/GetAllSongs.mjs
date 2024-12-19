@@ -9,7 +9,7 @@ export const GetAllSongs = async (req, res) => {
                 description: true,
                 music: true,
                 slug: true,
-                author: true
+                author : { select: { fullname: true }}
             }
         })
 

@@ -7,7 +7,7 @@ import { GetAllSongs } from "../controllers/GetAllSongs.mjs";
 
 const router = Router();
 
-router.post('/create', RefreshAccess ,CheckAuth, TrackBodyCheck, CreateTrack);
+router.post('/create' ,CheckAuth, TrackBodyCheck, CreateTrack);
 
 router.get('/', GetAllSongs);
 
