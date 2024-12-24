@@ -6,6 +6,7 @@ import { EachUserTrack } from "../controllers/EachUserTrack.mjs";
 import { GetAllSongs } from "../controllers/GetAllSongs.mjs";
 import { GetOneTrack } from "../controllers/GetOneTrack.mjs";
 import { UpdateTrack } from "../controllers/UpdateTrack.mjs";
+import { DeleteTrack } from "../controllers/DeleteTrack.mjs";
 
 const router = Router();
 
@@ -15,7 +16,9 @@ router.get('/', GetAllSongs);
 
 router.get('/:id', GetOneTrack);
 
-router.put('/update/:id',CheckAuth, UpdateTrack);
+router.put('/update/:id',CheckAuth, TrackBodyCheck, UpdateTrack);
+
+router.delete('/delete/:id', CheckAuth, DeleteTrack);
 
 router.post('/mytracks', CheckAuth, EachUserTrack);
 

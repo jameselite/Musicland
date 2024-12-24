@@ -20,5 +20,5 @@ model Track {
   music String
   slug String @unique
   authorid Int
-  author User @relation(fields: [authorid], references: [id])
+  author User @relation(fields: [authorid], references: [id], onDelete: Cascade)
 }
