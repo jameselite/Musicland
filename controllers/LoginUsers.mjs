@@ -20,7 +20,7 @@ export const LoginUsers = async (req, res) => {
         if(!IsPasswordMatch){
             throw new Error("Email or password is wrong.");
         }
-        const accesstoken = jwt.sign({ email: email}, JWT_ACCESS_SECRET, { expiresIn : '1m' });
+        const accesstoken = jwt.sign({ email: email}, JWT_ACCESS_SECRET, { expiresIn : '15m' });
         res.cookie("AccessToken", accesstoken, { httpOnly: true });
 
         const refreshtoken = jwt.sign({ email: email }, JWT_REFRESH_SECRET, { expiresIn : '90d' });
