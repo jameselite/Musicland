@@ -6,19 +6,30 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id Int @id @default(autoincrement()) 
-  email String @unique
-  fullname String 
-  password String
-  tracks Track[]
+  id        Int      @id @default(autoincrement()) 
+  email     String   @unique
+  fullname  String   
+  password  String   
+  tracks    Track[]  
+  playlist   Playlist? @relation
 }
+
 model Track {
-  id Int @id @default(autoincrement())
-  title String
-  description String
-  music String
-  slug String @unique
-  authorid Int
-  author User @relation(fields: [authorid], references: [id], onDelete: Cascade)
+  id          Int      @id @default(autoincrement())
+  title       String   
+  description String  
+  music       String   
+  slug        String   @unique
+  authorid    Int      
+  author      User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
+  playlists    Playlist[] @relation("PlaylistTracks")
+}
+
+model Playlist {
+  id       Int      @id @default(autoincrement())
+  authorid Int      @unique
+  author   User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
+  tracks   Track[]  @relation("PlaylistTracks")
 }

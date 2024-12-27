@@ -7,6 +7,8 @@ import { GetAllSongs } from "../controllers/GetAllSongs.mjs";
 import { GetOneTrack } from "../controllers/GetOneTrack.mjs";
 import { UpdateTrack } from "../controllers/UpdateTrack.mjs";
 import { DeleteTrack } from "../controllers/DeleteTrack.mjs";
+import { AddToPlaylist } from "../controllers/AddToPlaylist.mjs";
+import { ShowPlaylist } from "../controllers/ShowPlaylist.mjs";
 
 const router = Router();
 
@@ -21,5 +23,9 @@ router.put('/update/:id',CheckAuth, TrackBodyCheck, UpdateTrack);
 router.delete('/delete/:id', CheckAuth, DeleteTrack);
 
 router.post('/mytracks', CheckAuth, EachUserTrack);
+
+router.post('/:id/toplaylist', CheckAuth, AddToPlaylist);
+
+router.post('/myplaylist', CheckAuth, ShowPlaylist);
 
 export default router.post('/')
