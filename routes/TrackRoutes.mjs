@@ -10,6 +10,7 @@ import { DeleteTrack } from "../controllers/DeleteTrack.mjs";
 import { AddToPlaylist } from "../controllers/AddToPlaylist.mjs";
 import { ShowPlaylist } from "../controllers/ShowPlaylist.mjs";
 import { RemoveFromPlaylist } from "../controllers/RemoveFromPlaylist.mjs";
+import { AddLike } from "../controllers/AddLike.mjs";
 
 const router = Router();
 
@@ -30,5 +31,7 @@ router.post('/:id/toplaylist', CheckAuth, AddToPlaylist);
 router.post('/myplaylist', CheckAuth, ShowPlaylist);
 
 router.post('/:id/playlistdel', CheckAuth, RemoveFromPlaylist);
+
+router.post('/:id/like', CheckAuth, AddLike);
 
 export default router.post('/')

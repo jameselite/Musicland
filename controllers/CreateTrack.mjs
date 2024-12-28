@@ -12,10 +12,8 @@ export const CreateTrack = async (req, res) => {
     let count = 0;
     let new_slug = slug;
 
-    // Check if the slug already exists
     let existingTrack = await prisma.track.findUnique({ where: { slug: new_slug } });
 
-    // Loop to find a unique slug
     while (existingTrack) {
       count++;
       new_slug = `${slug}-${count}`;
@@ -39,6 +37,8 @@ export const CreateTrack = async (req, res) => {
       music: new_track.music,
       author: req_user.fullname,
       slug: new_track.slug,
+      like: new_track.like
+      
     };
 
     return res.status(201).json(res_json);

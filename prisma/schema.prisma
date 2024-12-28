@@ -14,6 +14,7 @@ model User {
   password  String   
   tracks    Track[]  
   playlist   Playlist? @relation
+  likes Like[]
 }
 
 model Track {
@@ -25,6 +26,7 @@ model Track {
   authorid    Int      
   author      User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
   playlists    Playlist[] @relation("PlaylistTracks")
+  likes Like[]
 }
 
 model Playlist {
@@ -32,4 +34,16 @@ model Playlist {
   authorid Int      @unique
   author   User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
   tracks   Track[]  @relation("PlaylistTracks")
+}
+
+model Like {
+  id Int @id @default(autoincrement())
+
+  trackid Int
+  authorid Int
+
+  track Track @relation(fields: [trackid], references: [id])
+  author User @relation(fields: [authorid], references: [id])
+
+  @@unique([trackid, authorid])
 }
