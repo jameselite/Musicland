@@ -2,11 +2,13 @@ import express from "express";
 import AuthRoutes from "./routes/AuthRoutes.mjs";
 import TackRoutes from "./routes/TrackRoutes.mjs";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.use('/api/auth', AuthRoutes);
 app.use('/api/tracks', TackRoutes);

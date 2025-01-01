@@ -3,10 +3,9 @@ import { RegisterUser } from "../controllers/RegisterUser.mjs";
 import { LoginUsers, LogoutUsers } from "../controllers/LoginUsers.mjs";
 import { CheckAuth } from "../middlewares/AuthMiddleware.mjs";
 import { NewToken } from "../controllers/NewToken.mjs";
-
+import { AuthStatus } from "../controllers/AuthStatus.mjs";
 
 const router = Router();
-
 
 router.post('/register', RegisterUser);
 
@@ -16,5 +15,6 @@ router.post('/logout', CheckAuth, LogoutUsers);
 
 router.post("/getnewtoken", NewToken);
 
+router.post("/auth_status", AuthStatus);
 
 export default router
