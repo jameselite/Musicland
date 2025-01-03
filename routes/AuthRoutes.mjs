@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { RegisterUser } from "../controllers/RegisterUser.mjs";
-import { LoginUsers, LogoutUsers } from "../controllers/LoginUsers.mjs";
+import { RegisterUser } from "../controllers/Authentication/RegisterUser.mjs";
+import { LoginUsers, LogoutUsers } from "../controllers/Authentication/LoginUsers.mjs";
 import { CheckAuth } from "../middlewares/AuthMiddleware.mjs";
-import { NewToken } from "../controllers/NewToken.mjs";
-import { AuthStatus } from "../controllers/AuthStatus.mjs";
+import { NewToken } from "../controllers/Authentication/NewToken.mjs";
+import { AuthStatus } from "../controllers/Authentication/AuthStatus.mjs";
 
 const router = Router();
 

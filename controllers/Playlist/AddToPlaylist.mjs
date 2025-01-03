@@ -1,4 +1,4 @@
-import prisma from "../prismaClient.mjs";
+import prisma from "../../prismaClient.mjs";
 
 export const AddToPlaylist = async (req, res) => {
     try {

@@ -11,7 +11,7 @@
 //     return res.status(400).json({ error: err.message });
 //   }
 // };
-import prisma from "../prismaClient.mjs";
+import prisma from "../../prismaClient.mjs";
 
 export const EachUserTrack = async (req, res) => {
   try {

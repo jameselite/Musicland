@@ -1,16 +1,16 @@
 import { Router } from "express";
 import { CheckAuth } from "../middlewares/AuthMiddleware.mjs";
 import { TrackBodyCheck } from "../middlewares/TrackBodyCheck.mjs";
-import { CreateTrack } from "../controllers/CreateTrack.mjs";
-import { EachUserTrack } from "../controllers/EachUserTrack.mjs";
-import { GetAllSongs } from "../controllers/GetAllSongs.mjs";
-import { GetOneTrack } from "../controllers/GetOneTrack.mjs";
-import { UpdateTrack } from "../controllers/UpdateTrack.mjs";
-import { DeleteTrack } from "../controllers/DeleteTrack.mjs";
-import { AddToPlaylist } from "../controllers/AddToPlaylist.mjs";
-import { ShowPlaylist } from "../controllers/ShowPlaylist.mjs";
-import { RemoveFromPlaylist } from "../controllers/RemoveFromPlaylist.mjs";
-import { AddLike } from "../controllers/AddLike.mjs";
+import { CreateTrack } from "../controllers/Tracks/CreateTrack.mjs";
+import { EachUserTrack } from "../controllers/Tracks/EachUserTrack.mjs";
+import { GetAllSongs } from "../controllers/Tracks/GetAllSongs.mjs";
+import { GetOneTrack } from "../controllers/Tracks/GetOneTrack.mjs";
+import { UpdateTrack } from "../controllers/Tracks/UpdateTrack.mjs";
+import { DeleteTrack } from "../controllers/Tracks/DeleteTrack.mjs";
+import { AddToPlaylist } from "../controllers/Playlist/AddToPlaylist.mjs";
+import { ShowPlaylist } from "../controllers/Playlist/ShowPlaylist.mjs";
+import { RemoveFromPlaylist } from "../controllers/Playlist/RemoveFromPlaylist.mjs";
+import { AddLike } from "../controllers/Tracks/AddLike.mjs";
 
 const router = Router();
 

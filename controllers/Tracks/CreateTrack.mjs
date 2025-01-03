@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import prisma from "../prismaClient.mjs";
+import prisma from "../../prismaClient.mjs";
 
 export const CreateTrack = async (req, res) => {
   try {

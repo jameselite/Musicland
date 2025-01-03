@@ -1,4 +1,4 @@
-import prisma from "../prismaClient.mjs";
+import prisma from "../../prismaClient.mjs";
 import bcrypt from "bcrypt";
 
 export const RegisterUser = async (req, res) => {
