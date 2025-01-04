@@ -15,6 +15,7 @@ model User {
   tracks    Track[]  
   playlist   Playlist? @relation
   likes Like[]
+  comments Comment[]
 }
 
 model Track {
@@ -27,6 +28,7 @@ model Track {
   author      User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
   playlists    Playlist[] @relation("PlaylistTracks")
   likes Like[]
+  comments Comment[]
 }
 
 model Playlist {
@@ -46,4 +48,17 @@ model Like {
   author User @relation(fields: [authorid], references: [id])
 
   @@unique([trackid, authorid])
+}
+
+model Comment {
+  id Int @id @default(autoincrement())
+
+  trackid Int 
+  authorid Int 
+
+  text String
+  created_at String
+  
+  track Track @relation(fields: [trackid], references: [id])
+  author User @relation(fields: [authorid], references: [id])
 }

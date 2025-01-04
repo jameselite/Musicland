@@ -12,6 +12,8 @@ import { ShowPlaylist } from "../controllers/Playlist/ShowPlaylist.mjs";
 import { RemoveFromPlaylist } from "../controllers/Playlist/RemoveFromPlaylist.mjs";
 import { AddLike } from "../controllers/Tracks/AddLike.mjs";
 import { RemoveLike } from "../controllers/Tracks/RemoveLike.mjs";
+import { AddComment } from "../controllers/Comments/AddComment.mjs";
+import { RemoveComment } from "../controllers/Comments/RemoveComment.mjs";
 
 const router = Router();
 
@@ -36,5 +38,9 @@ router.post('/:id/playlistdel', CheckAuth, RemoveFromPlaylist);
 router.post('/:id/like', CheckAuth, AddLike);
 
 router.post(':id/removelike', CheckAuth, RemoveLike);
+
+router.post('/:id/addcomment', CheckAuth, AddComment);
+
+router.post('/:trackid/deletecomment/:commentid', CheckAuth, RemoveComment);
 
 export default router.post('/')
