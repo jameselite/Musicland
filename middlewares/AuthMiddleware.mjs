@@ -1,10 +1,7 @@
 import jwt from "jsonwebtoken";
 import axios from "axios";
+import dotenv from "dotenv";
 
-const JWT_ACCESS_SECRET = "imsoroushdeveloper";
-const JWT_REFRESH_SECRET = "imdeveloper";
-
-// Middleware to check access token
 export const CheckAuth = (req, res, next) => {
     try {
         const accesstoken = req.cookies.AccessToken;
@@ -12,8 +9,7 @@ export const CheckAuth = (req, res, next) => {
         if (!accesstoken) {
             return res.status(401).json({ error: "Access token is required." });
         }
-
-        jwt.verify(accesstoken, JWT_ACCESS_SECRET, (err, user) => {
+        jwt.verify(accesstoken, process.env.JWT_ACCESS_SECRET, (err, user) => {
             if (err) return res.status(403).json({ error: "Invalid access token." });
             req.user = user;
             next();

@@ -1,10 +1,9 @@
 import prisma from "../../prismaClient.mjs";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { configDotenv } from "dotenv";
+import dotenv from "dotenv";
 
-const JWT_ACCESS_SECRET = "imsoroushdeveloper";
-const JWT_REFRESH_SECRET = "imdeveloper";
+dotenv.config();
 
 export const LoginUsers = async (req, res) => {
     try{
@@ -20,10 +19,10 @@ export const LoginUsers = async (req, res) => {
         if(!IsPasswordMatch){
             throw new Error("Email or password is wrong.");
         }
-        const accesstoken = jwt.sign({ email: email}, JWT_ACCESS_SECRET, { expiresIn : '15m' });
+        const accesstoken = jwt.sign({ email: email}, process.env.JWT_ACCESS_SECRET, { expiresIn : '15m' });
         res.cookie("AccessToken", accesstoken, { httpOnly: true });
 
-        const refreshtoken = jwt.sign({ email: email }, JWT_REFRESH_SECRET, { expiresIn : '90d' });
+        const refreshtoken = jwt.sign({ email: email }, process.env.JWT_REFRESH_SECRET, { expiresIn : '90d' });
         res.cookie("RefreshToken", refreshtoken, { httpOnly: true });
         return res.json({ message : "User logged successfully." });
     }catch(err){

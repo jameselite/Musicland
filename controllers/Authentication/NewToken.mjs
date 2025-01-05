@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
-const JWT_REFRESH_SECRET = "imdeveloper";
-const JWT_ACCESS_SECRET = "imsoroushdeveloper";
+import dotenv from "dotenv";
 
 export const NewToken = (req, res) => {
     try {
@@ -8,9 +7,9 @@ export const NewToken = (req, res) => {
         if (!refreshtoken) {
             return res.status(403).json({ message: "Refresh token is required" });
         }
-        const user = jwt.verify(refreshtoken, JWT_REFRESH_SECRET);
+        const user = jwt.verify(refreshtoken, process.env.JWT_REFRESH_SECRET);
 
-        const new_access_token = jwt.sign({ email: user.email }, JWT_ACCESS_SECRET, { expiresIn: "15m" });
+        const new_access_token = jwt.sign({ email: user.email }, process.env.JWT_ACCESS_SECRET, { expiresIn: "15m" });
         
         return res.status(200).json({ token: new_access_token });
 
