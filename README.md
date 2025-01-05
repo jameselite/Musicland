@@ -22,31 +22,40 @@
 <h4>Since this is a very small project, i just write the endpoints here:</h4>
 
 ```
-/api/tracks/create         // Creates a new track (requires authentication and body validation),
-                           body: title, description, music url.
+POST /api/tracks: Create a new track (requires authentication and body validation).
 
-/api/tracks                // Outputs the list of all tracks.
+GET /api/tracks: Retrieve a list of all tracks.
 
-/api/tracks/:id            // Outputs the details of a specific track by its ID.
+GET /api/tracks/:id: Retrieve details of a specific track by its ID.
 
-/api/tracks/update/:id     // Updates a specific track by its ID (requires authentication and body validation).
+PUT /api/tracks/update/:id: Update a specific track by its ID (requires authentication and body validation).
 
-/api/tracks/delete/:id     // Deletes a specific track by its ID (requires authentication).
+DELETE /api/tracks/delete/:id: Delete a specific track by its ID (requires authentication).
 
-/api/tracks/mytracks       // Outputs the list of tracks created by the authenticated user (requires authentication).
+POST /api/tracks/mytracks: Retrieve a list of tracks created by the authenticated user (requires authentication).
 
-/api/tracks/:id/toplaylist // Adds a specific track to a playlist (requires authentication).
+POST /api/tracks/:id/toplaylist: Add a specific track to a playlist (requires authentication).
 
-/api/tracks/myplaylist     // Outputs the playlist of the authenticated user (requires authentication).
+POST /api/tracks/myplaylist: Retrieve the playlist of the authenticated user (requires authentication).
 
-/api/tracks/:id/playlistdel// Removes a specific track from a playlist (requires authentication).
+POST /api/tracks/:id/playlistdel: Remove a specific track from a playlist (requires authentication).
 
-/api/tracks/:id/like       // Adds a like to a specific track (requires authentication).
+POST /api/tracks/:id/like: Add a like to a specific track (requires authentication).
 
-/api/tracks/:id/removelike // Removes a like from a specific track (requires authentication).
+POST /api/tracks/:id/removelike: Remove a like from a specific track (requires authentication).
 
-/api/tracks/:id/addcomment  // Adds a comment to a specific track (requires authentication).
+POST /api/tracks/:id/addcomment: Add a comment to a specific track (requires authentication).
 
-/api/tracks/:trackid/deletecomment/:commentid // Deletes a specific comment from a track (requires authentication).
+POST /api/tracks/:trackid/deletecomment/:commentid: Delete a specific comment from a track (requires authentication).
+
+POST /api/auth/register: Registers a new user by accepting user details and creating a new account.
+
+POST /api/auth/login: Logs in an existing user by verifying credentials and issuing a token.
+
+POST /api/auth/logout: Logs out the authenticated user, invalidating their session (requires authentication).
+
+POST /api/auth/getnewtoken: Retrieves a new authentication token, typically used for refreshing sessions.
+
+POST /api/auth/auth_status: Checks the authentication status of the user, confirming if they are logged in or not.
 
 ```
