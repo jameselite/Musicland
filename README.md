@@ -5,6 +5,8 @@
 ![License](https://img.shields.io/badge/Framework-ExpressJS-blue)  ![License](https://img.shields.io/badge/ORM-Prisma-purple)          ![License](https://img.shields.io/badge/Package_Manager-NPM-orange)    ![License](https://img.shields.io/badge/slug-Slugify-cyan)
 
 ###### My first javascript API :))
+###### Sorry if the codes are not clean.
+###### Make me happy with a star
 <br>
 
 ***<h2>What this API do?</h2>***
@@ -59,3 +61,21 @@ POST /api/auth/getnewtoken: Retrieves a new authentication token, typically used
 POST /api/auth/auth_status: Checks the authentication status of the user, confirming if they are logged in or not.
 
 ```
+<h2>How to Setup?</h2>
+
+* Install the dependecies with :
+  ```bash
+  npm install
+  ```
+
+* create a PostgreSQL database with the name of " music_db ".
+
+* migrate with this command:
+  ```bash
+  npx prisma migrate dev
+  ```
+
+* Start the API with this command in the main directory:
+  ```bash
+  node app.mjs
+  ```
