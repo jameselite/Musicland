@@ -37,12 +37,13 @@ export const CreateTrack = async (req, res) => {
       music: new_track.music,
       author: req_user.fullname,
       slug: new_track.slug,
-      like: new_track.like
+      like: new_track.like,
+      success: true
       
     };
 
     return res.status(201).json(res_json);
   } catch (err) {
-    return res.status(400).json({ error: err.message });
+    return res.status(400).json({ error: err.message, success: false });
   }
 };

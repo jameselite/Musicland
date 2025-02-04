@@ -23,8 +23,8 @@ export const RemoveComment = async (req, res) => {
 
         await prisma.comment.delete({ where: {id: Number(commentid), trackid: Number(thetrack.id), authorid: Number(currentuser.id)}});
 
-        return res.status(200).json({ message: "Comment deleted successfully" });
+        return res.status(200).json({ message: "Comment deleted successfully", success: true });
     } catch (err) {
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message, success: false });
     }
 }

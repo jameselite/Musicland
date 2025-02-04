@@ -17,9 +17,9 @@ export const AddLike = async (req, res) => {
 
         const new_like = await prisma.like.create({ data: { authorid: CurrentUser.id , trackid: TheTrack.id }});
 
-        return res.status(200).json({ message: "Track liked."});
+        return res.status(200).json({ message: "Track liked.", success: true });
         
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

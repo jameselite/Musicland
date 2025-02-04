@@ -18,8 +18,8 @@ export const RemoveLike = async (req, res) => {
 
         await prisma.like.delete({ where: {trackid_authorid: { authorid: currentuser.id, trackid: thetrack.id }}});
 
-        return res.status(200).json({ message: "Like removed." });
+        return res.status(200).json({ message: "Like removed.", success: true });
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

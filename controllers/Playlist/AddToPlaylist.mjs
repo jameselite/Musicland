@@ -28,8 +28,8 @@ export const AddToPlaylist = async (req, res) => {
 
         const user_playlist = await prisma.playlist.update({ where: {id: is_playlist_there.id }, include: {tracks: true}, data: { tracks: { connect: { id: TheTrack.id} }}});
 
-        return res.status(201).json({ message: "Song added to playlist."})
+        return res.status(201).json({ message: "Song added to playlist.", success: true })
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

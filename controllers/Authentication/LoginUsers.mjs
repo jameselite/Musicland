@@ -24,9 +24,9 @@ export const LoginUsers = async (req, res) => {
 
         const refreshtoken = jwt.sign({ email: email }, process.env.JWT_REFRESH_SECRET, { expiresIn : '90d' });
         res.cookie("RefreshToken", refreshtoken, { httpOnly: true });
-        return res.json({ message : "User logged successfully." });
+        return res.json({ message : "User logged successfully.", success: true });
     }catch(err){
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }
 export const LogoutUsers = (req, res) => {
@@ -34,8 +34,8 @@ export const LogoutUsers = (req, res) => {
         res.clearCookie("AccessToken");
         res.clearCookie("RefreshToken");
 
-        return res.status(200).json({ message: "User logged out successfully."});
+        return res.status(200).json({ message: "User logged out successfully.", success: true});
     }catch(err){
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

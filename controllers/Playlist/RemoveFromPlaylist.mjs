@@ -18,8 +18,8 @@ export const RemoveFromPlaylist = async (req, res) => {
 
         await prisma.playlist.update({ where: { authorid : CurrentUser.id }, data: { tracks: { disconnect: { id: Thetrack.id }}}});
 
-        return res.status(200).json({ message: ""})
+        return res.status(200).json({ message: "Track removed from playlist", success: true })
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

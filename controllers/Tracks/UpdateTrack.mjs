@@ -20,7 +20,6 @@ export const UpdateTrack = async (req, res) => {
             let newslug = slug;
             let count = 1;
 
-            // Check for slug uniqueness
             while (await prisma.track.findUnique({ where: { slug: newslug } })) {
                 newslug = `${slug}-${count}`;
                 count++;
@@ -48,8 +47,8 @@ export const UpdateTrack = async (req, res) => {
             },
             data: data_vars
         });
-        return res.status(200).json(newtrack);
+        return res.status(200).json({newtrack, success: true});
     } catch (err) {
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message, success: false });
     }
 };

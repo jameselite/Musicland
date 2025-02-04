@@ -13,10 +13,10 @@ export const DeleteTrack = async (req, res) => {
 
         await prisma.track.delete({ where: { slug: trackid}});
 
-        return res.status(200).json({ message: "Track deleted successfully." });
+        return res.status(200).json({ message: "Track deleted successfully.", success: true });
 
     } catch (err) {
         
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

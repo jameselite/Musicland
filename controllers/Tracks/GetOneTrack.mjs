@@ -17,9 +17,9 @@ export const GetOneTrack = async (req, res) => {
 
         const findtrack = {...trackfound, ...{ likecount: thelikecount }}
 
-        return res.status(200).json(findtrack);
+        return res.status(200).json({findtrack, success: true});
 
     } catch (err) {
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message, success: false });
     }
 }

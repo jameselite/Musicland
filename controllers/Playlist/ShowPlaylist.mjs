@@ -8,8 +8,8 @@ export const ShowPlaylist = async (req, res) => {
 
         const ThePlaylist = await prisma.playlist.findUnique({ where: { authorid: CurrentUser.playlist.authorid }, select:{ tracks: { select: { title: true, description: true, music: true, slug: true, author: { select: { fullname:true }}}}}})
 
-        return res.status(200).json(ThePlaylist);
+        return res.status(200).json({ ThePlaylist, success: true });
     } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

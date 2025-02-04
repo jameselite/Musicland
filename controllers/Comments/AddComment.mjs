@@ -23,8 +23,8 @@ export const AddComment = async (req, res) => {
 
         const newcomment = await prisma.comment.create({ data: { trackid: thetrack.id, authorid: currentuser.id, text:  textofcomment, created_at: formated_date}});
 
-        return res.status(201).json({ message: "Comment added." });
+        return res.status(201).json({ message: "Comment added.", success: true });
         } catch (err) {
-        return res.status(400).json({ error: err.message })
+        return res.status(400).json({ error: err.message, success: false })
     }
 }

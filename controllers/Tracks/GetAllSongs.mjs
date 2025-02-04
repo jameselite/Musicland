@@ -14,12 +14,12 @@ export const GetAllSongs = async (req, res) => {
         })
 
         if(!allsongs){
-            return res.status(200).json({ "message" : "There is no song." });
+            return res.status(200).json({ "message" : "There is no song.", success: true });
         }
 
         return res.status(200).json(allsongs)
 
     } catch (err) {
-        return res.status(400).json({ error: err.message });
+        return res.status(400).json({ error: err.message, success: false });
     }
 }
