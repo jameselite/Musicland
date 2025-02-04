@@ -9,7 +9,7 @@ export const DeleteTrack = async (req, res) => {
         const isFound = await prisma.track.findUnique({ where: { slug: trackid }, include: {author: true}});
         if(!isFound) throw new Error("Track not found.");
 
-        if(isFound.author.email !== req.user.email) throw new Error("You are not the author.");
+        if(isFound.author.email !== req.user.email || !req.user.isadmin) throw new Error("You are not the author.");
 
         await prisma.track.delete({ where: { slug: trackid}});
 

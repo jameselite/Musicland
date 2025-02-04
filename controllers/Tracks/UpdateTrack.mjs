@@ -9,6 +9,8 @@ export const UpdateTrack = async (req, res) => {
         const findtrack = await prisma.track.findUnique({ where: { slug: trackid } });
         if (!findtrack) throw new Error("Track not found.");
 
+        if(findtrack.author.email !== req.user.email || !req.user.isadmin) throw new Error("You are not the author.");
+
         const { title, description, music } = req.body;
 
         if (!title && !description && !music) throw new Error("Requested data should not be empty.");

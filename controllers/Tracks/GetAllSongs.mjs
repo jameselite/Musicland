@@ -17,7 +17,7 @@ export const GetAllSongs = async (req, res) => {
             return res.status(200).json({ "message" : "There is no song.", success: true });
         }
 
-        return res.status(200).json(allsongs)
+        return res.status(200).json({ allsongs, success: true })
 
     } catch (err) {
         return res.status(400).json({ error: err.message, success: false });

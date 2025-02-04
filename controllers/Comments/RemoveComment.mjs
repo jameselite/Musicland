@@ -19,7 +19,7 @@ export const RemoveComment = async (req, res) => {
         const iscommentexist = await prisma.comment.findUnique({ where: {id: Number(commentid), trackid: Number(thetrack.id), authorid: Number(currentuser.id)}});
 
         if(!iscommentexist) throw new Error("Comment not found.");
-        if(iscommentexist.authorid !== currentuser.id) throw new Error("Access denied.");
+        if(iscommentexist.authorid !== currentuser.id || !req.user.isadmin) throw new Error("Access denied.");
 
         await prisma.comment.delete({ where: {id: Number(commentid), trackid: Number(thetrack.id), authorid: Number(currentuser.id)}});
 
