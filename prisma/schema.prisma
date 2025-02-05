@@ -24,6 +24,7 @@ model Track {
   description String  
   music       String   
   slug        String   @unique
+  picture String
   authorid    Int      
   author      User     @relation(fields: [authorid], references: [id], onDelete: Cascade)
   playlists    Playlist[] @relation("PlaylistTracks")

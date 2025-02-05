@@ -14,33 +14,36 @@ import { AddLike } from "../controllers/Tracks/AddLike.mjs";
 import { RemoveLike } from "../controllers/Tracks/RemoveLike.mjs";
 import { AddComment } from "../controllers/Comments/AddComment.mjs";
 import { RemoveComment } from "../controllers/Comments/RemoveComment.mjs";
+import { SearchTracks } from "../controllers/Tracks/SearchTrack.mjs";
 
 const router = Router();
 
-router.post('/create' ,CheckAuth, TrackBodyCheck, CreateTrack);
+router.post("/create", CheckAuth, TrackBodyCheck, CreateTrack);
 
-router.get('/', GetAllSongs);
+router.get("/", GetAllSongs);
 
-router.get('/:id', GetOneTrack);
+router.get("/:id", GetOneTrack);
 
-router.put('/update/:id',CheckAuth, TrackBodyCheck, UpdateTrack);
+router.put("/update/:id", CheckAuth, TrackBodyCheck, UpdateTrack);
 
-router.delete('/delete/:id', CheckAuth, DeleteTrack);
+router.delete("/delete/:id", CheckAuth, DeleteTrack);
 
-router.post('/mytracks', CheckAuth, EachUserTrack);
+router.post("/mytracks", CheckAuth, EachUserTrack);
 
-router.post('/:id/toplaylist', CheckAuth, AddToPlaylist);
+router.post("/:id/toplaylist", CheckAuth, AddToPlaylist);
 
-router.post('/myplaylist', CheckAuth, ShowPlaylist);
+router.post("/myplaylist", CheckAuth, ShowPlaylist);
 
-router.post('/:id/playlistdel', CheckAuth, RemoveFromPlaylist);
+router.post("/:id/playlistdel", CheckAuth, RemoveFromPlaylist);
 
-router.post('/:id/like', CheckAuth, AddLike);
+router.post("/:id/like", CheckAuth, AddLike);
 
-router.post(':id/removelike', CheckAuth, RemoveLike);
+router.post("/:id/removelike", CheckAuth, RemoveLike);
 
-router.post('/:id/addcomment', CheckAuth, AddComment);
+router.post("/:id/addcomment", CheckAuth, AddComment);
 
-router.post('/:trackid/deletecomment/:commentid', CheckAuth, RemoveComment);
+router.post("/:trackid/deletecomment/:commentid", CheckAuth, RemoveComment);
 
-export default router.post('/')
+router.get("/search/:q", SearchTracks);
+
+export default router.post("/");

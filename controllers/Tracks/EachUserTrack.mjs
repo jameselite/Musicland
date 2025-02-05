@@ -10,15 +10,18 @@ export const EachUserTrack = async (req, res) => {
             title: true,
             description: true,
             music: true,
+            picture: true,
             slug: true,
-            author: { select: { fullname: true }}
+            author: { select: { fullname: true } },
           },
         },
       },
     });
 
     if (!req_user || !req_user.tracks) {
-      return res.status(404).json({ error: "No tracks found for this user.", success: false });
+      return res
+        .status(404)
+        .json({ error: "No tracks found for this user.", success: false });
     }
 
     const res_tracks = req_user.tracks;

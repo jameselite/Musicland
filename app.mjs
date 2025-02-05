@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-app.use('/api/auth', AuthRoutes);
-app.use('/api/tracks', TackRoutes);
+app.use("/api/auth", AuthRoutes);
+app.use("/api/tracks", TackRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`);
