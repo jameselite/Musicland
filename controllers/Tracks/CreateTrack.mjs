@@ -28,7 +28,7 @@ export const CreateTrack = async (req, res) => {
         title: title,
         description: description,
         music: music,
-        picture: picture,
+        picture: picture || process.env.DEFAULT_PIC,
         author: {
           connect: { id: req_user.id },
         },
