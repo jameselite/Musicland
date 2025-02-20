@@ -15,7 +15,8 @@ import { RemoveLike } from "../controllers/Tracks/RemoveLike.mjs";
 import { AddComment } from "../controllers/Comments/AddComment.mjs";
 import { RemoveComment } from "../controllers/Comments/RemoveComment.mjs";
 import { SearchTracks } from "../controllers/Tracks/SearchTrack.mjs";
-import { UserComments } from "../controllers/Comments/UserComments";
+import { UserComments } from "../controllers/Comments/UserComments.mjs";
+import { UpdateComment } from "../controllers/Comments/UpdateComment.mjs";
 
 const router = Router();
 
@@ -48,5 +49,7 @@ router.post("/:trackid/deletecomment/:commentid", CheckAuth, RemoveComment);
 router.get("/search/:q", SearchTracks);
 
 router.post("/usercomments", CheckAuth, UserComments);
+
+router.post("/:trackid/update/:commentid", CheckAuth, UpdateComment);
 
 export default router.post("/");
