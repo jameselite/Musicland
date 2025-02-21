@@ -1,0 +1,19 @@
+backend:
+    functions:
+        - entry: app.mjs
+          handler: handler
+          name: express
+          path: .
+          type: httpServer
+    language:
+        name: js
+        runtime: nodejs20.x
+    path: .
+    scripts:
+        deploy:
+            - npm install
+        local:
+            - npm install
+name: Musicland
+region: us-east-1
+yamlVersion: 2
