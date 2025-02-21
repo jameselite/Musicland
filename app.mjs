@@ -62,6 +62,6 @@ const uploadPicture = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 }, f
 app.post("/api/uploadmusic", CheckAuth, uploadMusic.single('file'), UploadMusic);
 app.post("/api/uploadpicture", CheckAuth, uploadPicture.single('picture'), UploadPicture);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 3000}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
