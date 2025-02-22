@@ -1,5 +1,11 @@
 import slugify from "slugify";
 import prisma from "../../prismaClient.mjs";
+import path from "path";
+import { fileURLToPath } from "url";
+import fs from "fs-extra";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const UpdateTrack = async (req, res) => {
   try {
@@ -43,6 +49,16 @@ export const UpdateTrack = async (req, res) => {
     }
     if(picture){
         data_vars.picture = picture;
+    }
+
+    if (data_vars.picture) {
+      picturePath = path.join(__dirname, "uploads", findtrack.picture);
+      await fs.remove(picturePath);
+    }
+
+    if (data_vars.music) {
+      musicPath = path.join(__dirname, "uploads", findtrack.music);
+      await fs.remove(musicPath);
     }
 
     const newtrack = await prisma.track.update({

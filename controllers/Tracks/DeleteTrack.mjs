@@ -1,4 +1,10 @@
+import fs from "fs-extra";
 import prisma from "../../prismaClient.mjs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const DeleteTrack = async (req, res) => {
   try {
@@ -15,6 +21,12 @@ export const DeleteTrack = async (req, res) => {
       throw new Error("You are not the author.");
 
     await prisma.track.delete({ where: { slug: trackid } });
+
+    const imagepath = path.join(__dirname, "uploads", isFound.picture);
+    const trackpath = path.join(__dirname, "uploads", isFound.music);
+    
+    await fs.remove(imagepath);
+    await fs.remove(trackpath);
 
     return res
       .status(200)
