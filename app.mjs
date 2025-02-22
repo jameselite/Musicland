@@ -15,7 +15,11 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: "*",
+  methods: "GET, POST, PUT, DELETE, OPTIONS",
+  allowedHeaders: "Content-Type, Authorization"
+}));
 app.use('/uploads', express.static('uploads'));
 
 app.use("/api/auth", AuthRoutes);
