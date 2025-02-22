@@ -18,8 +18,10 @@ app.use(cookieParser());
 app.use(cors({
   origin: "*",
   methods: "GET, POST, PUT, DELETE, OPTIONS",
-  allowedHeaders: "Content-Type, Authorization"
+  allowedHeaders: "Content-Type, Authorization",
+  credentials: true
 }));
+
 app.use('/uploads', express.static('uploads'));
 
 app.use("/api/auth", AuthRoutes);
@@ -66,6 +68,12 @@ const uploadPicture = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 }, f
 app.post("/api/uploadmusic", CheckAuth, uploadMusic.single('file'), UploadMusic);
 app.post("/api/uploadpicture", CheckAuth, uploadPicture.single('picture'), UploadPicture);
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+app.post("/test", (req, res) => {
+  res.json({ message: "POST request is working!" });
+});
+
+const PORT = process.env.PORT;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
